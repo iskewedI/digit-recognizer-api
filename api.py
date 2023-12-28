@@ -1,10 +1,7 @@
 from flask import Flask, request, jsonify
 import numpy as np
-import tensorflow as tf
 from tensorflow.keras.models import load_model
 import cv2
-import os
-import matplotlib.pyplot as plt
 
 # Load the Keras pretrained model
 model = load_model('model.h5')
