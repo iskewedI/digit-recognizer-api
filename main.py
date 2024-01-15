@@ -6,12 +6,11 @@ import cv2
 # Load the Keras pretrained model
 model = load_model('model.h5')
 
+# Create a Flask app
 app = Flask(__name__)
 
 @app.route('/recognize', methods=['POST'])
 def recognize():
-    print("Recognize")
-
     # Get the input image from the JSON
     data = request.get_json()
     image = data.get('image')
@@ -56,9 +55,6 @@ def convert_image():
 
     # Reshape the image to match the model's input shape
     image = np.reshape(image, (1, 28, 28, 1))
-
-    # Convert the image to a string representation
-    image_string = np.array2string(image)
 
     # Return the string representation of the image
     return image.tolist()
